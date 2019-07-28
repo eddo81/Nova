@@ -1,0 +1,18 @@
+{
+    "name": "eddo81/nova",
+    "description": "Core library of the Nova WordPress theme",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "eddo81",
+            "email": "eduardo_jonnerstig@live.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Nova\\": "nova/" 
+      }
+    },
+    "require": {}
+}
