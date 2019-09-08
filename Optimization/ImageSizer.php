@@ -3,12 +3,12 @@
 namespace Nova\Optimization;
 
 /**
- * Class ImageSizer
+ * Class ImageSizer.
+ *
  * @package Discover
  *
  * Fork of https://wordpress.org/plugins/optimize-images-resizing/
  */
-
 class ImageSizer {
 
   public function __construct() {
@@ -21,14 +21,14 @@ class ImageSizer {
     // we don't handle this
     if(is_array($size)) {
       return false;
-    } 
+    }
 
     $meta = wp_get_attachment_metadata($id);
     $wanted_width = $wanted_height = 0;
 
     if(empty($meta['file'])) {
       return false;
-    } 
+    }
 
     // get $size dimensions
     global $_wp_additional_image_sizes;
@@ -37,14 +37,14 @@ class ImageSizer {
         $wanted_width = $_wp_additional_image_sizes[$size]['width'];
         $wanted_height = $_wp_additional_image_sizes[$size]['height'];
         $wanted_crop = $_wp_additional_image_sizes[$size]['crop'] ?? false;
-      } 
+      }
 
       elseif(in_array($size, ['thumbnail', 'medium', 'large'])) {
         $wanted_width  = get_option($size . '_size_w');
         $wanted_height = get_option($size . '_size_h');
         $wanted_crop   = ('thumbnail' === $size) ? (bool) get_option('thumbnail_crop') : false;
-      } 
-      
+      }
+
       else {
         // unknown size, bail out
         return false;
@@ -68,8 +68,8 @@ class ImageSizer {
           $result_height,
           true,
         ];
-      } 
-      
+      }
+
       else {
         // image size not found, create it
         $attachment_path = get_attached_file($id);
@@ -109,8 +109,8 @@ class ImageSizer {
             $result_height,
             true,
           ];
-        } 
-        
+        }
+
         else {
           return false;
         }
