@@ -2,6 +2,14 @@
 
 namespace Nova\Core;
 
+use function add_action;
+use function wp_register_style;
+use function wp_register_script;
+use function wp_enqueue_script;
+use function get_template_directory_uri;
+use function get_template_directory;
+use function is_admin;
+
 /**
  * Class AssetManager.
  *
