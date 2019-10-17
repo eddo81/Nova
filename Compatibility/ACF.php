@@ -32,7 +32,7 @@ class ACF {
 	public function __construct( array $options = [] ) {
 		$defaults = [
 			'acf_json_directory' => '',
-			'nbsp_to_br'         => true,
+			'nbsp_to_br'         => false,
 		];
 
 		$this->options       = array_merge( $defaults, $options );
