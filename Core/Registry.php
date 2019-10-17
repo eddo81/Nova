@@ -34,7 +34,7 @@ class Registry {
 	 * @throws \Exception Base Exception.
 	 * @return mixed
 	 */
-	public static function get( string $key ) : mixed {
+	public static function get( string $key ) {
 		if ( ! self::key_exists( $key ) ) {
 			throw new \Exception( "No {$key} is set in the registry!" );
 		}

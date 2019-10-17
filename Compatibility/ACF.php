@@ -1,4 +1,5 @@
 <?php
+
 namespace Nova\Compatibility;
 
 use function add_filter;
@@ -120,24 +121,5 @@ class ACF {
 		$content = preg_replace( '#<p>\s*+(<br\s*/*>)?\s*</p>#i', '<br>', $content );
 		$content = preg_replace( '~\s?<p>(\s|&nbsp;)+</p>\s?~', '<br>', $content );
 		return $content;
-	}
-
-	/**
-	 * Get flexible content
-	 *
-	 * @param string   $flexible_content_key The name / key of the page builder.
-	 * @param callable $callback Function to be called. The name of the flexible content layout will be passed as the first parameter. An accociative array with the rest of the data will be passed as the second parameter.
-	 * @return void
-	 */
-	public function get_flexible_content( string $flexible_content_key = '', callable $callback ) : void {
-		$content_blocks = $this->get_field( $flexible_content_key ) ?? [];
-
-		foreach ( $content_blocks as $content_block ) {
-
-			if ( array_key_exists( 'acf_fc_layout', $content_block ) === true && is_callable( $callback ) ) {
-				$layout = array_shift( $content_block );
-				$callback( $layout, $content_block );
-			}
-		}
 	}
 }
